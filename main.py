@@ -4,21 +4,22 @@ from bs4 import BeautifulSoup
 import kidwrit
 import kidparser
 
-
 '''
 response = urllib2.urlopen('http://tutorialspoint.com/python/python_overview.htm')
 html_doc = response.read()
 '''
 with open('for_proga.html', "r") as f:
-    plates = kidparser.toss_soup_modified(f.readline(), 'h1')
-    print(plates)
+    plates = kidparser.toss_soup(f.readline(), 'h1')
+    print("\nPlates (h1): (too long)")
     for plate in plates:
-        spoons = kidparser.toss_soup_modified(plate, 'h2')
-        print(spoons)
+        soup = BeautifulSoup(plate, 'html.parser')
+        spoons = kidparser.toss_soup(plate, 'h2')
+        kid = kidparser.parse_kid(soup)
+        print("\nSpoons (h2): (too long)")
         for spoon in spoons:
-            soup = BeautifulSoup(spoon, 'html.parser')
-            kids = kidparser.parse_kids(soup)
+            #  для каждой ложки у нас уже есть ребёнок!
+            kidparser.parse_heading(soup, kid)
     #  kid_info.
     # print(kid_info)
-    for k in kids: print("Kid:", k.to_string())
+    # for k in kids: print("Kid:", k.to_string())
     #  pprint(soup)

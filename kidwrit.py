@@ -1,8 +1,8 @@
 import re
 
 
-def k_toss_info(info: str):
-    print(f"-K_TOSS_INFO---\n1) Info: {info}")
+def toss_kid_info(info: str):
+    print(f"\n-TOSS_KID_INFO---\n1) Info: {info}")
     b_year = re.search(r'\d\d\d\d', info).group()
     print("2) B_year: ", b_year)
     bits = info.split(b_year)
@@ -19,7 +19,7 @@ def k_toss_info(info: str):
         gender = '-'
     kid = Kid(name, b_year, gender)
     print(f"4) Kid: {kid.to_string()}")
-    print("---------------")
+    print("------------------")
     return kid
 
 
