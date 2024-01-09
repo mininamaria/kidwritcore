@@ -1,14 +1,11 @@
-import requests
-from pprint import pprint
 from bs4 import BeautifulSoup
-import kidwrit
-import kidparser
+from kidwrit import kidparser
 
 '''
 response = urllib2.urlopen('http://tutorialspoint.com/python/python_overview.htm')
 html_doc = response.read()
 '''
-with open('for_proga.html', "r") as f:
+with open('kids_full.html', "r") as f:
     plates = kidparser.toss_soup(f.readline(), 'h1')
     print("\nPlates (h1): (too long)")
     for plate in plates:
@@ -18,7 +15,7 @@ with open('for_proga.html', "r") as f:
         print("\nSpoons (h2): (too long)")
         for spoon in spoons:
             #  для каждой ложки у нас уже есть ребёнок!
-            kidparser.parse_heading(soup, kid)
+            kidparser.parse_heading_info(soup, kid)
     #  kid_info.
     # print(kid_info)
     # for k in kids: print("Kid:", k.to_string())
