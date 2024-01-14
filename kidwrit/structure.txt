@@ -1,0 +1,18 @@
+h1: Kid
+    h2: Heading
+    p: Text
+        {
+        span: piece of Text
+        span: piece of commented Text, if followed by a
+        sup: Anno
+        span:
+        span:
+        ...
+        }
+    h2: Heading
+    p: Text
+        {
+        ...
+        }
+h1: Kid
+    ...
