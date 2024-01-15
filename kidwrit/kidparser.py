@@ -42,11 +42,12 @@ def toss_soup(contents: str, key: str):
     primary_matches = re.split(f"({key})", contents)
     primary_matches.pop(0)
     [primary_matches.remove(m) for m in primary_matches if m == key]
-    matches = [key+m for m in primary_matches]
+    if "/" not in key:
+        matches = [key + m for m in primary_matches]
+    else:
+        matches = primary_matches
     print(f"\n-TOSS_SOUP---\nkey: {key}\nlen(matches): {len(matches)}\n-------------")
     return matches
-
-
 
 
 '''
@@ -56,5 +57,3 @@ def toss_soup(contents: str, key: str):
         else:
             print("Method called without a name")
 '''
-
-

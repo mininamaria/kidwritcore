@@ -7,13 +7,15 @@ from kidwrit import structing
 response = urllib2.urlopen('http://tutorialspoint.com/python/python_overview.htm')
 html_doc = response.read()
 '''
-log_dir = structing.log_directory()
+#log_dir = structing.log_directory()
 
 with open('kids_full.html', "r") as f:
     plates = kidparser.toss_soup(f.readline(), 'h1')
 
     for plate in plates:
         soup = BeautifulSoup(plate, 'html.parser')
+        experiment = kidparser.toss_soup(plate, '/h1>')
+        for e in experiment: print(e)
         spoons = kidparser.toss_soup(plate, 'h2')
 
         kid = kidparser.parse_kid(soup)

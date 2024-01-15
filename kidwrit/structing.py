@@ -30,6 +30,7 @@ def log_directory():
     # Path
     path = os.path.join(parent_dir, directory)
     # Create the directory
-    os.mkdir(path)
+    if not os.path.exists(path):
+        os.mkdir(path)
     return path
 
