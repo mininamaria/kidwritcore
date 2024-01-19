@@ -12,14 +12,20 @@ class KidText:
         self.creator = creator
         if grade is None:
             print("Default constructor called: no grade")
+            self.grade = None
         else:
             self.grade = grade
             print("Parameterized constructor called with grade", self.grade)
         if text is None:
             print("Default constructor called: no text")
+            self.text = None
         else:
             self.text = text
         # probably later i'll add a KidAnno list
+
+    def to_string(self):
+        return f"TEXT {self.name} by {self.creator.name}:\n- place: {self.place},\n- date: {self.date}," \
+               f"\n- grade: {self.grade},\n- text: {self.text}"
 
 
 def toss_heading(info: str, creator: kidding.Kid):
