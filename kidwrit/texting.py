@@ -1,5 +1,4 @@
 import re
-
 from kidwrit import kidding
 
 
@@ -27,6 +26,16 @@ class KidText:
         return f"TEXT {self.name} by {self.creator.name}:\n- place: {self.place},\n- date: {self.date}," \
                f"\n- grade: {self.grade},\n- text: {self.text}"
 
+    def date_to_ints(self):
+        return [int(item) for item in self.date.split('.')]
+
+    def calc_grade(self):
+        txt_date = self.date_to_ints()
+        if txt_date[2] == self.creator.to_sch_year:
+            return 1
+        else:
+            return txt_date[2]-self.creator.to_sch_year+(txt_date[1]//9)
+
 
 def toss_heading(info: str, creator: kidding.Kid):
     print(f"\n-TOSS_HEADING---\n1) Info: {info}")
@@ -40,3 +49,10 @@ def toss_heading(info: str, creator: kidding.Kid):
     print("----------------")
     heading = KidText(name=name, date=date, place=place, creator=creator)
     return heading
+
+
+
+
+
+
+
