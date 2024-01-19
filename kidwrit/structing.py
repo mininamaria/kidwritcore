@@ -4,11 +4,12 @@ import os
 
 
 class Logfile:
-    def __init__(self, name):
+    def __init__(self, name, path):
         self.name = log_heading(name)
+        self.path = os.path.join(path, self.name)
 
     def mk_note(self, info: str):
-        with open(self.name, 'w') as f:
+        with open(self.path, 'w') as f:
             f.write(info)
 
 
