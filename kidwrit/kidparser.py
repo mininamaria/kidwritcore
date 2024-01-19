@@ -15,7 +15,7 @@ def parse_kid(soup: BeautifulSoup):
     return kid
 
 
-def parse_heading_info(soup: BeautifulSoup, kid: kidding.Kid):
+def parse_texts(soup: BeautifulSoup, kid: kidding.Kid):
     heading = ''
     texts = []
     h2 = soup.find_all("h2")
@@ -37,12 +37,12 @@ def parse_text(soup: BeautifulSoup):
     return text
 
 
-def toss_soup(contents: str, key: str):
+def toss_block(contents: str, key: str):
     key = "<" + key
     primary_matches = re.split(f"({key})", contents)
-    primary_matches.pop(0)
     [primary_matches.remove(m) for m in primary_matches if m == key]
     if "/" not in key:
+        primary_matches.pop(0)
         matches = [key + m for m in primary_matches]
     else:
         matches = primary_matches
