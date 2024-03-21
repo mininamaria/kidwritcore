@@ -1,9 +1,9 @@
 from bs4 import BeautifulSoup
 from kidwrit import kidparser
-from kidwrit import structing
+from kidwrit import kid_logging
 
 # making directory for log files
-log_dir = structing.log_directory()
+log_dir = logging.log_directory()
 
 # opening our file
 with open('kids_full.html', "r") as f:
@@ -17,7 +17,7 @@ with open('kids_full.html', "r") as f:
         kid = kidparser.parse_kid(BeautifulSoup(tossed_h1[0], 'html.parser'))
         # LATER WE'LL CALCULATE KID'S GRADE HERE
         # write it to log
-        log = structing.Logfile(kid.name, log_dir)
+        log = logging.Logfile(kid.name, log_dir)
         log.mk_note(kid.to_string())
         # h1_soup = BeautifulSoup(tossed_h1[1], 'html.parser')
 

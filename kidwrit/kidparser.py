@@ -24,7 +24,6 @@ def parse_texts(soup: BeautifulSoup, kid: kidding.Kid):
             heading = "".join((heading, s.text))
         print("\nPARSE_HEADINGS\nText heading:", heading)
         # for child in soup.children: print(child)
-        print("hello world")
         text = texting.toss_heading(heading, kid)
         #   here we'll add text data
         texts.append(text)

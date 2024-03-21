@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 from kidwrit import kidparser
-from kidwrit import structing
+from kidwrit import kid_logging
 
 
 '''
@@ -10,13 +10,13 @@ html_doc = response.read()
 #log_dir = structing.log_directory()
 
 with open('kids_full.html', "r") as f:
-    plates = kidparser.toss_soup(f.readline(), 'h1')
+    plates = kidparser.toss_block(f.readline(), 'h1')
 
     for plate in plates:
         soup = BeautifulSoup(plate, 'html.parser')
-        experiment = kidparser.toss_soup(plate, '/h1>')
-        for e in experiment: print(e)
-        spoons = kidparser.toss_soup(plate, 'h2')
+        experiment = kidparser.toss_block(plate, '/h1>')
+        for e in experiment: print("EXPERIMENT:", e)
+        spoons = kidparser.toss_block(plate, 'h2')
 
         kid = kidparser.parse_kid(soup)
 
@@ -25,8 +25,8 @@ with open('kids_full.html', "r") as f:
 
         for spoon in spoons:
             log.mk_note(f"\nSpoon: {spoon}")
-            kidparser.parse_heading_info(soup, kid)
-            drops = kidparser.toss_soup(spoon, 'p')
+            kidparser.parse_texts(soup, kid)
+            drops = kidparser.toss_block(spoon, 'p')
 
             for drop in drops:
                 log.mk_note(f"\nDrop: {drop}")
